@@ -1,0 +1,185 @@
+{
+  "courses": [
+    {
+      "id": "python",
+      "title": "Python Programming",
+      "icon": "🐍",
+      "level": "Beginner",
+      "description": "From first variables to classes and exception handling.",
+      "lessons": [
+        {
+          "title": "Introduction",
+          "content": "**Python** is a readable, general-purpose language used for web apps, data science, automation and AI.\n\nRun a script with `python hello.py`:\n\n```python\nprint(\"Hello, world!\")\n```"
+        },
+        {
+          "title": "Variables",
+          "content": "A **variable** is a name that refers to a value. Assignment uses `=`.\n\n```python\nname = \"Asha\"\nage = 20\nname = \"Ravi\"   # variables can be reassigned\n```\n\nUse clear names such as `total_marks` instead of `x`."
+        },
+        {
+          "title": "Data Types",
+          "content": "- `int`: whole numbers (`42`)\n- `float`: decimals (`3.14`)\n- `str`: text (`\"hi\"`)\n- `bool`: `True` or `False`\n- `list`, `tuple`, `dict`, `set`: collections\n\n```python\nprint(type(42), type(3.14), type(\"hi\"), type(True))\n```"
+        },
+        {
+          "title": "Operators",
+          "content": "- Arithmetic: `+ - * / // % **`\n- Comparison: `== != < > <= >=`\n- Logical: `and or not`\n- Assignment shortcuts: `+=`, `-=`\n\n```python\nprint(7 // 2, 7 % 2, 2 ** 3)   # 3 1 8\nprint(5 > 3 and 2 == 2)        # True\n```"
+        },
+        {
+          "title": "Functions",
+          "content": "A **function** is reusable code defined with `def`.\n\n```python\ndef add(a, b=0):\n    return a + b\n\nprint(add(3, 4))   # 7\nprint(add(5))      # 5\n```\n\nParameters receive inputs, and `return` sends a result back."
+        },
+        {
+          "title": "Control Statements",
+          "content": "**Conditionals** choose a path; **loops** repeat work.\n\n```python\nmarks = 72\nif marks >= 75:\n    print(\"Distinction\")\nelif marks >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Retry\")\n\nfor i in range(3):\n    print(i)        # 0 1 2\n\nwhile marks < 80:\n    marks += 4\n```\n\n`break` exits a loop and `continue` skips to the next pass."
+        },
+        {
+          "title": "Classes and OOP Concepts",
+          "content": "A **class** is a blueprint for objects. The four core OOP ideas are:\n\n- **Encapsulation**: keep data and methods together\n- **Inheritance**: a child class reuses a parent's code\n- **Polymorphism**: the same method name behaves differently per class\n- **Abstraction**: hide details and show only what is needed\n\n```python\nclass Student:\n    def __init__(self, name):\n        self.name = name\n    def greet(self):\n        return f\"Hi, {self.name}\"\n\nclass Topper(Student):\n    def greet(self):\n        return f\"Congrats, {self.name}!\"\n\nprint(Topper(\"Meena\").greet())\n```"
+        },
+        {
+          "title": "Exception Handling",
+          "content": "Use `try` / `except` to handle errors without crashing the program.\n\n```python\ntry:\n    n = int(input(\"Number: \"))\n    print(10 / n)\nexcept ValueError:\n    print(\"Please enter a number.\")\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero.\")\nfinally:\n    print(\"Done.\")\n```\n\nUse `raise` to signal your own errors."
+        }
+      ]
+    },
+    {
+      "id": "sql",
+      "title": "SQL Databases",
+      "icon": "🗄️",
+      "level": "Beginner",
+      "description": "Query, filter, sort, join and analyse data in relational databases.",
+      "lessons": [
+        {
+          "title": "Introduction",
+          "content": "**SQL** (Structured Query Language) talks to relational databases, which store data in tables made of rows and columns.\n\n```sql\nSELECT * FROM students;\n```\n\n`SELECT *` returns every column of the `students` table."
+        },
+        {
+          "title": "Commands",
+          "content": "The main command groups:\n\n- **DDL** (structure): `CREATE`, `ALTER`, `DROP`\n- **DML** (data): `INSERT`, `UPDATE`, `DELETE`\n- **DQL** (query): `SELECT`\n\n```sql\nCREATE TABLE students (id INT, name VARCHAR(50));\nINSERT INTO students VALUES (1, 'Asha');\nUPDATE students SET name = 'Asha K' WHERE id = 1;\nDELETE FROM students WHERE id = 1;\n```"
+        },
+        {
+          "title": "Constraints",
+          "content": "**Constraints** keep data valid.\n\n- `PRIMARY KEY`: unique row identifier\n- `FOREIGN KEY`: links to another table\n- `NOT NULL`: value required\n- `UNIQUE`: no duplicates\n- `CHECK`: value must meet a rule\n- `DEFAULT`: value used when none is given\n\n```sql\nCREATE TABLE enrolments (\n  id INT PRIMARY KEY,\n  student_id INT NOT NULL,\n  marks INT CHECK (marks BETWEEN 0 AND 100),\n  FOREIGN KEY (student_id) REFERENCES students(id)\n);\n```"
+        },
+        {
+          "title": "Filters and Sorting",
+          "content": "`WHERE` filters rows; `ORDER BY` sorts them.\n\n```sql\nSELECT name, marks\nFROM enrolments\nWHERE marks >= 50 AND marks < 90\nORDER BY marks DESC;\n```\n\nUseful operators: `=`, `<>`, `BETWEEN`, `IN`, `LIKE 'A%'`, `IS NULL`."
+        },
+        {
+          "title": "Aggregate Functions",
+          "content": "Aggregates summarise many rows into one value: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`.\n\n```sql\nSELECT course_id, COUNT(*) AS students, AVG(marks) AS avg_marks\nFROM enrolments\nGROUP BY course_id\nHAVING AVG(marks) >= 60;\n```\n\n`HAVING` filters groups, while `WHERE` filters rows before grouping."
+        },
+        {
+          "title": "Joins",
+          "content": "A **JOIN** combines rows from two tables on a shared key.\n\n- `INNER JOIN`: only matching rows\n- `LEFT JOIN`: all rows from the left table\n- `RIGHT JOIN`: all rows from the right table\n- `FULL JOIN`: all rows from both (not in MySQL; use UNION)\n\n```sql\nSELECT s.name, c.title, e.marks\nFROM enrolments e\nJOIN students s ON s.id = e.student_id\nJOIN courses c ON c.id = e.course_id;\n```"
+        },
+        {
+          "title": "Window Functions",
+          "content": "A **window function** calculates across related rows but keeps every row.\n\n```sql\nSELECT name, marks,\n       RANK() OVER (ORDER BY marks DESC) AS rank_pos,\n       AVG(marks) OVER (PARTITION BY course_id) AS course_avg\nFROM enrolments;\n```\n\n`PARTITION BY` groups the window, `ORDER BY` sets the order, and `ROW_NUMBER`, `RANK` and `LAG` are common choices."
+        }
+      ]
+    },
+    {
+      "id": "machine-learning",
+      "title": "Machine Learning",
+      "icon": "📈",
+      "level": "Intermediate",
+      "description": "Learn how machines learn from data: supervised, unsupervised and reinforcement learning.",
+      "lessons": [
+        {
+          "title": "Introduction",
+          "content": "**Machine learning** lets a program learn patterns from data instead of following hand-written rules.\n\nThe basic loop: collect data, train a model, evaluate it on new data, then use it to predict."
+        },
+        {
+          "title": "Supervised Learning",
+          "content": "The model learns from **labelled** examples.\n\n- **Classification** predicts a category (spam or not spam).\n- **Regression** predicts a number (house price).\n\nCommon algorithms: Linear Regression, Logistic Regression, Decision Trees, Random Forest, Support Vector Machines, k-Nearest Neighbours.\n\n```python\nfrom sklearn.linear_model import LinearRegression\nmodel = LinearRegression().fit(X_train, y_train)\nprint(model.predict(X_test))\n```"
+        },
+        {
+          "title": "Unsupervised Learning",
+          "content": "The model finds structure in **unlabelled** data.\n\n- **Clustering**: groups similar items (K-Means, Hierarchical Clustering, DBSCAN)\n- **Dimensionality reduction**: keeps key information in fewer features (PCA)\n- **Association**: finds items that occur together (Apriori)\n\n```python\nfrom sklearn.cluster import KMeans\nlabels = KMeans(n_clusters=3, random_state=0).fit_predict(X)\n```"
+        },
+        {
+          "title": "Reinforcement Learning and Its Algorithms",
+          "content": "An **agent** learns by acting in an **environment** and receiving **rewards** or penalties. The goal is to maximise total reward over time.\n\nKey terms: **state**, **action**, **reward**, **policy**.\n\nCommon algorithms:\n\n- **Q-Learning**: learns a value for each state-action pair\n- **SARSA**: like Q-Learning, but updates using the action actually taken\n- **Deep Q-Network (DQN)**: uses a neural network for large state spaces\n- **Policy Gradient / REINFORCE**: learns the policy directly\n- **Actor-Critic** and **PPO**: combine a policy with a value estimate\n\nExamples: game-playing agents, robot control, recommendation tuning."
+        }
+      ]
+    },
+    {
+      "id": "deep-learning",
+      "title": "Deep Learning",
+      "icon": "🧠",
+      "level": "Advanced",
+      "description": "Neural networks, RNNs, CNNs, LSTMs, loss functions and optimisation.",
+      "lessons": [
+        {
+          "title": "Introduction",
+          "content": "**Deep learning** uses neural networks with many layers to learn features directly from raw data such as images, audio and text.\n\nA neuron computes a weighted sum of its inputs, adds a bias, and applies an **activation function** such as ReLU, sigmoid or tanh."
+        },
+        {
+          "title": "RNN (Recurrent Neural Networks)",
+          "content": "An **RNN** processes sequences one step at a time and keeps a **hidden state** that carries memory forward. It suits text, time series and speech.\n\n```python\nimport torch.nn as nn\nrnn = nn.RNN(input_size=10, hidden_size=32, batch_first=True)\n```\n\nPlain RNNs struggle with long sequences because gradients shrink over many steps (the vanishing gradient problem)."
+        },
+        {
+          "title": "CNN (Convolutional Neural Networks)",
+          "content": "A **CNN** uses small learnable filters that slide over an image to detect edges, textures and shapes. Layers stack from simple to complex features.\n\nTypical parts: **convolution** layer, **pooling** layer (reduces size), **fully connected** layer (final decision).\n\n```python\nimport torch.nn as nn\nconv = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=3)\npool = nn.MaxPool2d(2)\n```"
+        },
+        {
+          "title": "Optimization",
+          "content": "**Optimisation** adjusts weights to reduce the loss.\n\n- **Gradient descent**: move weights opposite the gradient\n- **Learning rate**: step size (too big diverges, too small is slow)\n- **Stochastic / mini-batch gradient descent**: update using small batches\n- **Optimisers**: SGD with momentum, Adam (adaptive step sizes), RMSProp\n\n```python\noptimizer = torch.optim.Adam(model.parameters(), lr=0.001)\n```"
+        },
+        {
+          "title": "Loss Functions",
+          "content": "A **loss function** measures how wrong the model is. Training minimises it.\n\n- **Mean Squared Error (MSE)**: regression\n- **Binary Cross-Entropy**: two-class classification\n- **Categorical Cross-Entropy**: multi-class classification\n\n```python\nloss_fn = nn.CrossEntropyLoss()\nloss = loss_fn(outputs, labels)\n```"
+        },
+        {
+          "title": "Gradients and Backpropagation",
+          "content": "A **gradient** is the slope of the loss with respect to a weight. **Backpropagation** applies the chain rule backwards through the network to compute every gradient.\n\nWhen the gradients become very small (vanishing) or very large (exploding), training becomes unstable. Remedies include gradient clipping, better activations, normalisation and gated architectures such as LSTM.\n\n```python\nloss.backward()        # compute gradients\noptimizer.step()       # update weights\noptimizer.zero_grad() # clear old gradients\n```"
+        },
+        {
+          "title": "LSTM (Long Short-Term Memory)",
+          "content": "An **LSTM** is an RNN with three gates that control memory:\n\n- **Forget gate**: what to discard from the cell state\n- **Input gate**: what new information to store\n- **Output gate**: what to pass to the next step\n\nThe cell state carries long-term memory, which makes LSTMs better than plain RNNs on long sequences.\n\n```python\nlstm = nn.LSTM(input_size=10, hidden_size=32, batch_first=True)\n```"
+        }
+      ]
+    },
+    {
+      "id": "pandas",
+      "title": "Pandas",
+      "icon": "🐼",
+      "level": "Beginner",
+      "description": "Work with tabular data: Series, DataFrames, filtering, cleaning and sorting.",
+      "lessons": [
+        {
+          "title": "Introduction",
+          "content": "**Pandas** is a Python library for loading, cleaning and analysing tabular data.\n\n```python\nimport pandas as pd\nprint(pd.__version__)\n```"
+        },
+        {
+          "title": "Series",
+          "content": "A **Series** is a single labelled column of values.\n\n```python\nimport pandas as pd\nmarks = pd.Series([88, 72, 95], index=[\"Asha\", \"Ravi\", \"Meena\"])\nprint(marks[\"Ravi\"])   # 72\nprint(marks.mean())    # 85.0\n```"
+        },
+        {
+          "title": "DataFrame",
+          "content": "A **DataFrame** is a table: rows and named columns.\n\n```python\ndf = pd.DataFrame({\n    \"name\": [\"Asha\", \"Ravi\", \"Meena\"],\n    \"course\": [\"Python\", \"SQL\", \"Python\"],\n    \"marks\": [88, 72, 95],\n})\n```\n\nRead a file with `pd.read_csv(\"students.csv\")`."
+        },
+        {
+          "title": "Viewing Data",
+          "content": "```python\nprint(df.head())        # first 5 rows\nprint(df.tail(3))       # last 3 rows\nprint(df.shape)         # (rows, columns)\nprint(df.columns)       # column names\nprint(df.info())        # types and missing counts\nprint(df.describe())    # summary statistics\n```"
+        },
+        {
+          "title": "Filtering Data",
+          "content": "Use a condition inside square brackets.\n\n```python\nhigh = df[df[\"marks\"] >= 80]\npython_only = df[df[\"course\"] == \"Python\"]\nboth = df[(df[\"marks\"] > 70) & (df[\"course\"] == \"Python\")]\nselected = df.loc[df[\"marks\"] > 70, [\"name\", \"marks\"]]\n```\n\nUse `&` and `|` for combining conditions, and wrap each one in parentheses."
+        },
+        {
+          "title": "Handling Missing Values",
+          "content": "Missing values appear as `NaN` (or `None`).\n\n```python\nprint(df.isna().sum())               # count missing per column\ndf[\"marks\"] = df[\"marks\"].fillna(0)\ndf = df.dropna(subset=[\"name\"])     # drop rows missing a name\ndf[\"city\"] = df[\"city\"].fillna(\"Unknown\")\n```\n\nChoose the fix based on the data. A missing score might be filled with the average, while a missing ID should be removed."
+        },
+        {
+          "title": "Sorting Data",
+          "content": "```python\ndf.sort_values(\"marks\", ascending=False)\ndf.sort_values([\"course\", \"marks\"], ascending=[True, False])\ndf.sort_index()\n```\n\n`sort_values` returns a new DataFrame; add `inplace=True` to change the original."
+        },
+        {
+          "title": "Removing Duplicates",
+          "content": "```python\nprint(df.duplicated().sum())                 # count exact duplicate rows\ndf = df.drop_duplicates()\ndf = df.drop_duplicates(subset=[\"name\", \"course\"], keep=\"first\")\n```\n\n`keep` can be `\"first\"`, `\"last\"` or `False` (remove all copies)."
+        }
+      ]
+    }
+  ]
+}

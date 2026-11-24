@@ -1,0 +1,295 @@
+/* =====================================================================
+   Student Assistant - full application theme
+   Colours: primary #4b6cb7, dark navy #1f2a44, light background #f5f7fb
+   ===================================================================== */
+
+:root {
+    --primary: #4b6cb7;
+    --primary-dark: #182848;
+    --navy: #1f2a44;
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --text: #1f2a44;
+    --muted: #6b7690;
+    --border: #e3e8f3;
+    --radius: 14px;
+    --shadow: 0 4px 16px rgba(31, 42, 68, 0.08);
+}
+
+/* ---------- whole app ---------- */
+html, body, .stApp, [data-testid="stApp"] {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    background: var(--bg) !important;
+    color: var(--text);
+}
+[data-testid="stAppViewContainer"], [data-testid="stMain"], .main {
+    background: var(--bg) !important;
+}
+[data-testid="stHeader"] {
+    background: var(--bg) !important;
+}
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    max-width: 1200px;
+}
+
+/* ---------- headings & text ---------- */
+h1, h2, h3, h4 {
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    font-weight: 700;
+}
+h1 { font-size: 2.1rem; margin-bottom: 0.4rem; }
+h2 { font-size: 1.5rem; margin-top: 1.2rem; }
+h3 { font-size: 1.2rem; }
+p, li, label, [data-testid="stMarkdownContainer"] {
+    color: var(--text);
+}
+[data-testid="stCaptionContainer"], .stCaption, small {
+    color: var(--muted) !important;
+}
+a { color: var(--primary); }
+
+/* ---------- sidebar ---------- */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #1f2a44 0%, #16203a 100%) !important;
+    border-right: none;
+}
+[data-testid="stSidebar"] * {
+    color: #e8ecf5;
+}
+[data-testid="stSidebar"] [role="radiogroup"] label {
+    padding: 0.5rem 0.75rem;
+    border-radius: 10px;
+    margin-bottom: 0.25rem;
+    transition: background 0.15s ease;
+}
+[data-testid="stSidebar"] [role="radiogroup"] label:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+[data-testid="stSidebar"] [role="radiogroup"] label[data-checked="true"],
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) {
+    background: rgba(75, 108, 183, 0.35);
+}
+[data-testid="stSidebar"] .stButton > button {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+}
+[data-testid="stSidebar"] .stButton > button:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+/* ---------- buttons (all pages) ---------- */
+.stButton > button,
+.stFormSubmitButton > button,
+.stDownloadButton > button {
+    background: #ffffff;
+    color: var(--navy);
+    border: 1px solid #c9d3ea;
+    border-radius: 10px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    transition: all 0.15s ease;
+    box-shadow: 0 1px 2px rgba(31, 42, 68, 0.06);
+}
+.stButton > button:hover,
+.stFormSubmitButton > button:hover,
+.stDownloadButton > button:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(75, 108, 183, 0.2);
+}
+.stButton > button:active,
+.stFormSubmitButton > button:active {
+    transform: translateY(0);
+}
+.stButton > button[kind="primary"],
+.stFormSubmitButton > button[kind="primary"],
+.stFormSubmitButton > button {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+}
+.stButton > button[kind="primary"]:hover,
+.stFormSubmitButton > button:hover {
+    background: #3d5ba3;
+    color: #ffffff;
+    border-color: #3d5ba3;
+}
+
+/* ---------- inputs ---------- */
+.stTextInput input,
+.stTextArea textarea,
+.stNumberInput input {
+    background: #ffffff !important;
+    color: var(--text) !important;
+    border: 1px solid #d5ddee !important;
+    border-radius: 10px !important;
+}
+.stTextInput input:focus,
+.stTextArea textarea:focus,
+.stNumberInput input:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px rgba(75, 108, 183, 0.18) !important;
+}
+div[data-baseweb="select"] > div,
+div[data-baseweb="input"] > div {
+    background: #ffffff !important;
+    border-radius: 10px !important;
+    border-color: #d5ddee !important;
+}
+[data-testid="stSelectbox"] label, [data-testid="stTextInput"] label,
+[data-testid="stTextArea"] label, [data-testid="stNumberInput"] label {
+    font-weight: 600;
+    color: var(--navy);
+}
+
+/* ---------- forms & containers (cards) ---------- */
+[data-testid="stForm"] {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+    box-shadow: var(--shadow);
+}
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    background: var(--card);
+    border-radius: var(--radius) !important;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+div[data-testid="stVerticalBlockBorderWrapper"]:hover {
+    box-shadow: 0 10px 26px rgba(31, 42, 68, 0.14);
+    transform: translateY(-2px);
+}
+
+/* ---------- tabs (login / register) ---------- */
+[data-baseweb="tab-list"] {
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+[data-baseweb="tab"] {
+    font-weight: 600;
+    color: var(--muted) !important;
+    padding: 0.6rem 1rem;
+}
+[data-baseweb="tab"][aria-selected="true"] {
+    color: var(--primary) !important;
+}
+[data-baseweb="tab-highlight"] {
+    background-color: var(--primary) !important;
+}
+
+/* ---------- alerts ---------- */
+[data-testid="stAlert"] {
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(31, 42, 68, 0.05);
+}
+
+/* ---------- expanders (lessons, previews) ---------- */
+[data-testid="stExpander"] {
+    background: var(--card);
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    margin-bottom: 0.6rem;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+[data-testid="stExpander"] summary {
+    font-weight: 600;
+    font-size: 1.02rem;
+    color: var(--navy);
+    padding: 0.8rem 1rem;
+}
+[data-testid="stExpander"] details[open] summary {
+    background: #f4f7fd;
+}
+
+/* ---------- metrics ---------- */
+[data-testid="stMetric"] {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+    box-shadow: var(--shadow);
+}
+[data-testid="stMetricLabel"] { color: var(--muted); font-weight: 600; }
+[data-testid="stMetricValue"] { color: var(--navy); }
+
+/* ---------- tables & charts ---------- */
+[data-testid="stDataFrame"] {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+[data-testid="stVegaLiteChart"], [data-testid="stArrowVegaLiteChart"] {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 0.6rem;
+    box-shadow: var(--shadow);
+}
+
+/* ---------- code & markdown ---------- */
+[data-testid="stMarkdownContainer"] code {
+    border-radius: 6px;
+    background: #eef2fb;
+    color: #2b4590;
+    padding: 0.1rem 0.35rem;
+}
+[data-testid="stCodeBlock"], pre {
+    border-radius: 12px !important;
+}
+[data-testid="stDivider"] hr, hr {
+    border-color: var(--border) !important;
+}
+
+/* ---------- tooltips, spinner, dialogs ---------- */
+[data-testid="stSpinner"] { color: var(--primary); }
+
+/* ---------- course page hero ---------- */
+.course-hero {
+    background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+}
+.course-hero h1 {
+    color: #ffffff;
+    margin: 0 0 0.3rem 0;
+    font-size: 2rem;
+}
+.course-hero p {
+    color: #ffffff;
+    margin: 0;
+    opacity: 0.92;
+}
+.badge {
+    display: inline-block;
+    padding: 0.18rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-right: 0.4rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+.badge-level-beginner { background: #d7f5e3; color: #17663a; }
+.badge-level-intermediate { background: #fff1cc; color: #7a5a00; }
+.badge-level-advanced { background: #ffd9d9; color: #8a1d1d; }
+.badge-lessons { background: #e3e9fb; color: #2b4590; }
+
+/* ---------- small screens ---------- */
+@media (max-width: 768px) {
+    .block-container { padding: 1rem 0.8rem; }
+    h1 { font-size: 1.6rem; }
+    .course-hero h1 { font-size: 1.5rem; }
+}
