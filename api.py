@@ -133,7 +133,7 @@ def _ask(request: StudentRequest, background: BackgroundTasks):
             parts.append(f"## {title}\n\n{getattr(out, 'raw', str(out))}")
         answer = "\n\n---\n\n".join(parts) or str(specialist_result)
 
-    # Dashboard log (topic + agents used)
+    
     background.add_task(log_conversation, user_id, question,
                         extract_topic(question), decision, "agents")
 
